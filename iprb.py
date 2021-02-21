@@ -5,8 +5,8 @@ from math import factorial
 
 def load_data(infile):
     data = list()
-    with open(infile, 'r', encoding='ISO-8859-1') as file:
-        data = [int(i) for i in file.readline().strip().split()]
+    with open(infile, 'r', encoding='ISO-8859-1') as f:
+        data = [int(i) for i in f.readline().strip().split()]
 
     return data
 

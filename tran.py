@@ -4,8 +4,8 @@ import sys
 def load_data(infile):
     data = list()
     first = True
-    with open(infile, 'r', encoding='ISO-8859-1') as file:
-        for line in file:
+    with open(infile, 'r', encoding='ISO-8859-1') as f:
+        for line in f:
             if line[0] == '>':
                 if first:
                     string = ''

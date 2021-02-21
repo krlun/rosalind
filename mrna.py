@@ -2,8 +2,8 @@ import os
 import sys
 
 def load_data(infile):
-    with open(infile, 'r', encoding='ISO-8859-1') as file:
-        data = file.readline().strip()
+    with open(infile, 'r', encoding='ISO-8859-1') as f:
+        data = f.readline().strip()
     return data
 
 def write_data(outfile):

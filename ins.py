@@ -6,8 +6,8 @@ import pandas as pd
 
 def load_data(infile):
     array = list()
-    with open(infile, 'r', encoding='ISO-8859-1') as file:
-        for line in file:
+    with open(infile, 'r', encoding='ISO-8859-1') as f:
+        for line in f:
             line = line.strip()
             array.append(line)
 
