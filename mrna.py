@@ -2,20 +2,8 @@ import os
 import sys
 
 def load_data(infile):
-    data = list()
-    first = True
     with open(infile, 'r', encoding='ISO-8859-1') as file:
-        for line in file:
-            if line[0] == '>':
-                if first:
-                    string = ''
-                    first = False
-                else:
-                    data.append(string)
-                    string = ''
-            else:
-                string = string + line.strip()
-        data.append(string)
+        data = file.readline().strip()
     return data
 
 def write_data(outfile):
@@ -30,8 +18,15 @@ def write_data(outfile):
 
 def main(argv):
     data = load_data(argv[0])
-    print(calc_transition_transversion_ratio(data))
-
+    print(data)
+    number_of_codons_for_aa = {'F':2, 'L':6, 'S':6, 'Y':2, 'C':2, 'W':1, 'P':4, 'H':2, 'Q':2, 'R':6, 'I':3, 'M':1, 'T':4, 'N':2, 'K':2, 'V':4, 'A':4, 'D':2, 'E':2, 'G':4, 'Stop':3}
+    number_of_possibilities = 1
+    for aa in range(len(data)):
+        number_of_possibilities *= number_of_codons_for_aa[data[aa]]
+        number_of_possibilities %= 1000000
+    number_of_possibilities *= number_of_codons_for_aa['Stop']
+    number_of_possibilities %= 1000000
+    print(number_of_possibilities)
 
 
 if __name__ == "__main__":
