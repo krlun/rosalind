@@ -1,6 +1,7 @@
 import os
 import sys
 import requests
+import re
 
 
 def load_filenames(infile):
@@ -34,16 +35,12 @@ def download_data(files):
                     f.write(chunk)
 
 
-def find_motif(protein):
+def find_motif(protein, pattern):
     positions = list()
     for i in range(len(protein) - 4):
-        if protein[i] == 'N':
-            if protein[i+1] != 'P':
-                if protein[i+2] == 'S' or protein[i+2] == 'T':
-                    if protein[i+3] != 'P':
-                        positions.append(i+1)
+        if re.match(pattern, protein[i:i+4]):
+            positions.append(i+1)
     return positions
-
 
 def write_data(outfile):
     # not used
@@ -65,8 +62,9 @@ def print_positions(name, positions):
 def main(argv):
     filenames = load_filenames(argv[0])
     download_data(filenames)
+    pattern = 'N[^P][ST][^P]'
     for i in range(len(filenames)):
-        positions = find_motif(load_data(filenames[i] + '.fasta'))
+        positions = find_motif(load_data(filenames[i] + '.fasta'), pattern)
         print_positions(filenames[i], positions)
 
 
