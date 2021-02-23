@@ -3,7 +3,6 @@ import sys
 
 
 def load_data(infile):
-
     with open(infile, 'r', encoding='ISO-8859-1') as f:
         dna = f.readline().rstrip()
     return dna
