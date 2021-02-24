@@ -22,9 +22,13 @@ def hamming(dna1, dna2):
             count += 1
     return count
 
+def hamming2(dna1, dna2):
+    return sum(i != j for i, j in zip(dna1, dna2))
+
 def main(argv):
     dna1, dna2 = load_data(argv[0])
-    print(hamming(dna1, dna2))
+    # print(hamming(dna1, dna2))
+    print(hamming2(dna1, dna2))
 
 if __name__ == "__main__":
     main(sys.argv[1:])
