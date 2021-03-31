@@ -15,17 +15,16 @@ def write_data(outfile):
     f.close()
 
 def rabbits(n, k):
-    s = 1
-    for i in range(2, n):
-        s += (i-1)*k
-        print(i, s)
-    return s
-
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return rabbits(n-1, k) + k*rabbits(n-2, k)
 
 def main(argv):
     n, k = load_data(argv[0])
-    s = rabbits(n, k)
-    print(s)
+    print(rabbits(n, k))
 
 if __name__ == "__main__":
     main(sys.argv[1:])
