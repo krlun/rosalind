@@ -3,14 +3,12 @@ import sys
 import requests
 import re
 
-
 def load_filenames(infile):
     files = list()
     with open(infile, 'r', encoding='ISO-8859-1') as f:
         for line in f:
             files.append(line.strip())
     return files
-
 
 def load_data(infile):
     protein = str()
@@ -19,7 +17,6 @@ def load_data(infile):
             if line[0] != '>':
                 protein += line.rstrip()
     return protein
-
 
 def download_data(files):
     base_url = 'http://www.uniprot.org/uniprot/'
@@ -33,7 +30,6 @@ def download_data(files):
             for chunk in r.iter_content(chunk_size=1024):
                 if chunk:
                     f.write(chunk)
-
 
 def find_motif(protein, pattern):
     positions = list()
@@ -58,7 +54,6 @@ def print_positions(name, positions):
     else:
         return
 
-
 def main(argv):
     filenames = load_filenames(argv[0])
     download_data(filenames)
@@ -66,7 +61,6 @@ def main(argv):
     for i in range(len(filenames)):
         positions = find_motif(load_data(filenames[i] + '.fasta'), pattern)
         print_positions(filenames[i], positions)
-
 
 if __name__ == "__main__":
     main(sys.argv[1:])

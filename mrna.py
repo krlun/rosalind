@@ -15,7 +15,6 @@ def write_data(outfile):
     #f.write('')
     f.close()
 
-
 def main(argv):
     data = load_data(argv[0])
     print(data)
@@ -27,7 +26,6 @@ def main(argv):
     number_of_possibilities *= number_of_codons_for_aa['Stop']
     number_of_possibilities %= 1000000
     print(number_of_possibilities)
-
 
 if __name__ == "__main__":
     main(sys.argv[1:])

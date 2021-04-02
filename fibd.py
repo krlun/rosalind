@@ -20,7 +20,7 @@ def rabbits(n, m):
     for i in range(2, n):
         if i < m:
             sequence.append(sequence[-1] + sequence[-2])
-        elif (i == m) or (i == m + 1):
+        elif (i == m):
             sequence.append(sequence[-1] + sequence[-2] - 1)
         else:
             sequence.append(sequence[-1] + sequence[-2] - sequence[-(m+1)])
