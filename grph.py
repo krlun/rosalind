@@ -22,14 +22,11 @@ def load_data(infile):
     genes[gene_name] = gene
     return genes
 
-def create_adjaceny_list(genes):
+def create_adjacency_list(genes):
     adjacency_list = list()
     for key_i in genes.keys():
         for key_j in genes.keys():
-            # print(key_i, key_j)
             if key_i != key_j:
-                # print(key_i, key_j)
-                # print(genes[key_i][-3:])
                 if genes[key_i][-3:] == genes[key_j][0:3]:
                     adjacency_list.append(str(key_i) + ' ' + str(key_j))
     return adjacency_list
@@ -44,7 +41,7 @@ def write_data(outfile):
 
 def main(argv):
     genes = load_data(argv[0])
-    adjacency_list = create_adjaceny_list(genes)
+    adjacency_list = create_adjacency_list(genes)
     for item in adjacency_list:
         print(item)
 
