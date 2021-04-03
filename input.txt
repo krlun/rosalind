@@ -1,7 +1,8 @@
-10
-1 2
-2 8
-4 10
-5 9
-6 10
-7 9
+>Rosalind_9499
+TTTCCATTTA
+>Rosalind_0942
+GATTCATTTC
+>Rosalind_6568
+TTTCCATTTT
+>Rosalind_1833
+GTTCCATTTA
